@@ -59,14 +59,9 @@ mainsec:NewButton("Unlock All Islands","Unlocks All Islands", function()
 end)
 
 buttonsec:NewButton("Sell Ninjitsu","Sells your Ninjitsu",function()
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.Transparency = 1
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.Transparency = 1
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    delay(0.1, function()
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame = circleInner
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame = circleFakeInner
-    end)
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").sellAreaCircles.sellAreaCircle16.circleInner, 0)
+    wait()
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").sellAreaCircles.sellAreaCircle16.circleInner, 1)
 end)
 
 buttonsec:NewButton("Swing Sword","Swings your sword", function()
@@ -75,14 +70,9 @@ end)
 
 buttonsec:NewButton("Swing then Sell","Swings your sword then sells it", function()
     game.Players.LocalPlayer.ninjaEvent:FireServer("swingKatana")
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.Transparency = 1
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.Transparency = 1
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    delay(0.1, function()
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame = circleInner
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame = circleFakeInner
-    end)
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").sellAreaCircles.sellAreaCircle16.circleInner, 0)
+    wait()
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").sellAreaCircles.sellAreaCircle16.circleInner, 1)
 end)
 
 buttonsec:NewButton("Grab All Coins", "Grabs all the coins around the map", function()
@@ -91,7 +81,7 @@ buttonsec:NewButton("Grab All Coins", "Grabs all the coins around the map", func
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame 
         end
         
-        wait(0.01)
+        wait(0.1)
     end
 end)
 
@@ -108,28 +98,13 @@ playersec:NewTextBox("JumpPower", "Sets JumpPower", function(txt)
 end)
 
 --Main Loop
-local circleInner = game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame
-local circleFakeInner = game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame
-game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.SurfaceLight:Destroy()
-
 while wait() do
     pcall(function()
     local amount = game:GetService("Players").LocalPlayer.PlayerGui.gameGui.currencyFrame.strengthFrame.amountLabel
     if getgenv().AutoSell then
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.Transparency = 1
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.Transparency = 1
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-        
-        delay(0.1, function()
-            game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame = circleInner
-            game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame = circleFakeInner
-        end)
-    else
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.Transparency = 0
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.Transparency = 1
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleFakeInner.CFrame = circleInner
-        game:GetService("Workspace").sellAreaCircles.sellAreaCircle.circleInner.CFrame = circleInner
+        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").sellAreaCircles.sellAreaCircle16.circleInner, 0)
+    wait()
+    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, game:GetService("Workspace").sellAreaCircles.sellAreaCircle16.circleInner, 1)
     end
     
     if getgenv().AutoSwing then
